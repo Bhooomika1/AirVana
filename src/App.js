@@ -6,10 +6,6 @@ import PieChart from './components/PieChart';
 import './App.css';
 import { FaHome, FaBell, FaUsers, FaChartBar } from 'react-icons/fa';
 
-// Import images
-import background from './assets/background.png';
-import background2 from './assets/background_2.png';
-
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [airConcentrationData, setAirConcentrationData] = useState([]);
@@ -53,16 +49,8 @@ function App() {
     fetchReports();
   }, []);
 
-  // Define background styles for each section
-  const backgroundStyles = {
-    home: { backgroundImage: `url(${background2})` },
-    community: { backgroundImage: `url(${background})` },
-    reports: { backgroundImage: `url(${background})` },
-    alerts: { backgroundImage: `url(${background2})` },
-  };
-
   return (
-    <div className="App" style={backgroundStyles[activeSection]}>
+    <div className={`App ${activeSection}-section`}>
       <div className="app-container">
         <Header setActiveSection={setActiveSection} />
         <Hero />
