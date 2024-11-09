@@ -11,7 +11,7 @@ body {
 
 /* Background for Home, Community, and Reports sections */
 .home-section, .community-section, .reports-section {
-  background-image: url('assets/background_2.png'); /* Ensure the path is correct */
+  background-image: url('assets/background.png'); /* Ensure the path is correct */
   background-size: cover; /* Makes the image cover the entire section */
   background-position: center center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -20,7 +20,7 @@ body {
 
 /* Background for Alerts section */
 .alerts-section {
-  background-image: url('assets/background_2.png'); /* Ensure the path is correct */
+  background-image: url('assets/background.png'); /* Ensure the path is correct */
   background-size: cover; /* Makes the image cover the entire section */
   background-position: center center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
