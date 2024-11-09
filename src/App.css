@@ -1,11 +1,7 @@
+/* Default styles for the app */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f0f4f8;
-  background-image: url('./assets/background.png'); /* Correct path for public folder */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   color: #333;
 }
 
@@ -13,6 +9,25 @@ body {
   text-align: center;
 }
 
+/* Background for Home, Community, and Reports sections */
+.home-section, .community-section, .reports-section {
+  background-image: url('assets/background.png'); /* Corrected path */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* Background for Alerts section */
+.alerts-section {
+  background-image: url('assets/background_2.png'); /* Corrected path */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* Other styling */
 .dashboard {
   display: flex;
   justify-content: space-around;
@@ -21,12 +36,8 @@ body {
 }
 
 .app-container {
-  background-image: url('./assets/background.png'); /* Common background image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh; /* Ensure full viewport height */
-  color: white; /* Text color for both sections */
+  min-height: 100vh;
+  color: white;
 }
 
 .header {
@@ -40,17 +51,50 @@ body {
   max-width: 1200px;
   margin: 20px auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.1); /* Adjust transparency if needed */
+  background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
 }
 
 .hero {
-  height: 100vh; /* Full viewport height for the Hero section */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: -20px; /* Remove any space between the Header and Hero */
+  margin-top: -20px;
 }
 
+.home-card {
+  background: linear-gradient(135deg, #355c3c, #5e9d5d);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  width: 60%;
+  max-width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.home-title {
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.weather-info {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.chart-section {
+  margin-top: 20px;
+  width: 80%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}

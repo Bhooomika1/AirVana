@@ -6,6 +6,10 @@ import PieChart from './components/PieChart';
 import './App.css';
 import { FaHome, FaBell, FaUsers, FaChartBar } from 'react-icons/fa';
 
+// Import images
+import background from './assets/background.png';
+import background2 from './assets/background_2.png';
+
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [airConcentrationData, setAirConcentrationData] = useState([]);
@@ -49,28 +53,33 @@ function App() {
     fetchReports();
   }, []);
 
+  // Define background styles for each section
+  const backgroundStyles = {
+    home: { backgroundImage: `url(${background2})` },
+    community: { backgroundImage: `url(${background})` },
+    reports: { backgroundImage: `url(${background})` },
+    alerts: { backgroundImage: `url(${background2})` },
+  };
+
   return (
-    <div className="App">
-      {/* Pass setActiveSection to Header */}
+    <div className="App" style={backgroundStyles[activeSection]}>
       <div className="app-container">
-      <Header setActiveSection={setActiveSection} />
-      <Hero />
-    </div>
+        <Header setActiveSection={setActiveSection} />
+        <Hero />
+      </div>
       <div className="content">
         {activeSection === 'home' && (
           <div>
-            <Card
-              title="Home"
-              icon={<FaHome />}
-              content={
-                <div>
-                  <p>Current AQI: 75 (Moderate)</p>
-                  <p>Temperature: 22°C</p>
-                  <p>Humidity: 60%</p>
-                  <a href="#learn-more">Learn More</a>
-                </div>
-              }
-            />
+            <div className="home-card">
+              <h1 className="home-title">
+                <FaHome /> HOME
+              </h1>
+              <div className="weather-info">
+                <p>Weather in Your Location:</p>
+                <p>Temperature: 27.99°C</p>
+                <p>Weather: smoke</p>
+              </div>
+            </div>
             <div className="chart-section">
               <h2>Air Concentration Overview</h2>
               <PieChart airConcentrationData={airConcentrationData} />
