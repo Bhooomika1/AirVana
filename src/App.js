@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Card from './components/Card';
-import PieChart from './components/PieChart'; // Import the PieChart component
+import PieChart from './components/PieChart'; 
 import './App.css';
 import { FaHome, FaBell, FaUsers, FaChartBar } from 'react-icons/fa';
 
@@ -10,16 +10,9 @@ const chartData = {
   labels: ['CO2', 'PM2.5', 'PM10', 'O3', 'NO2', 'SO2'],
   datasets: [
     {
-      data: [400, 35, 50, 30, 25, 15], // Your data values
-      backgroundColor: [
-        '#FF6F61', // CO2
-        '#FFD700', // PM2.5
-        '#98FB98', // PM10
-        '#87CEEB', // O3
-        '#9370DB', // NO2
-        '#FFA500', // SO2
-      ],
-      borderColor: '#FFFFFF', // White borders to make slices stand out
+      data: [400, 35, 50, 30, 25, 15],
+      backgroundColor: ['#FF6F61', '#FFD700', '#98FB98', '#87CEEB', '#9370DB', '#FFA500'],
+      borderColor: '#FFFFFF',
       borderWidth: 2,
     },
   ],
@@ -28,9 +21,7 @@ const chartData = {
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [alerts, setAlerts] = useState([]);
-  const [communityPosts, setCommunityPosts] = useState([]);
-  const [reports, setReports] = useState([]);
-
+  
   useEffect(() => {
     const fetchAlerts = () => {
       const sampleAlerts = [
@@ -40,25 +31,7 @@ function App() {
       setAlerts(sampleAlerts);
     };
 
-    const fetchCommunityPosts = () => {
-      const samplePosts = [
-        { user: 'Jane Doe', message: 'Noticed heavy traffic affecting air quality today.' },
-        { user: 'John Smith', message: 'Community clean-up event this Saturday!' },
-      ];
-      setCommunityPosts(samplePosts);
-    };
-
-    const fetchReports = () => {
-      const sampleReports = [
-        { title: 'Monthly AQI Analysis', date: 'November 2024' },
-        { title: 'Pollution Impact Study', date: 'October 2024' },
-      ];
-      setReports(sampleReports);
-    };
-
     fetchAlerts();
-    fetchCommunityPosts();
-    fetchReports();
   }, []);
 
   return (
@@ -88,57 +61,29 @@ function App() {
         )}
 
         {activeSection === 'alerts' && (
-          <Card
-            title="Alerts"
-            icon={<FaBell />}
-            content={
-              <div>
+          <div className="alert-section">
+            <div className="alert-card">
+              <h1 className="alert-title">
+                <FaBell /> ALERT
+              </h1>
+              <div className="alert-messages">
                 {alerts.map((alert, index) => (
                   <div key={index}>
-                    <strong>{alert.type}</strong>
+                    <p><strong>{alert.type}</strong></p>
                     <p>{alert.message}</p>
                   </div>
                 ))}
               </div>
-            }
-          />
+            </div>
+            <div className="alert-images">
+            <img src="/assets/pollution.png" alt="Pollution Image 1" />
+            <img src="/assets/pollution_1.png" alt="Pollution Image 2" />
+            <img src="/assets/pollution_3.png" alt="Pollution Image 3" />
+            </div>
+          </div>
         )}
-
-        {activeSection === 'community' && (
-          <Card
-            title="Community"
-            icon={<FaUsers />}
-            content={
-              <div>
-                {communityPosts.map((post, index) => (
-                  <div key={index}>
-                    <strong>{post.user}</strong>
-                    <p>{post.message}</p>
-                  </div>
-                ))}
-                <a href="#community-forum">Join the Discussion</a>
-              </div>
-            }
-          />
-        )}
-
-        {activeSection === 'reports' && (
-          <Card
-            title="Reports"
-            icon={<FaChartBar />}
-            content={
-              <div>
-                {reports.map((report, index) => (
-                  <div key={index}>
-                    <strong>{report.title}</strong>
-                    <p>{report.date}</p>
-                  </div>
-                ))}
-                <a href="#download-reports">Download Reports</a>
-              </div>
-            }
-          />
-        )}
+        
+        {/* Other sections like Community and Reports */}
       </div>
     </div>
   );
