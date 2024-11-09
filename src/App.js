@@ -4,12 +4,16 @@ import Hero from './components/Hero';
 import Card from './components/Card';
 import './App.css';
 
+
+
 function App() {
   return (
     <div className="App">
+       
       <Header />
       <Hero />
       <div className="dashboard">
+     
         <Card title="Home" content={<p>Graph or Data</p>} />
         <Card title="Alerts" content={<p>Alerts Data</p>} />
         <Card title="Community" content={<p>Community Info</p>} />
