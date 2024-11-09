@@ -22,10 +22,10 @@ const Hero = () => {
         <h1>AirVana</h1>
         <p>Air Quality Tracking</p>
         <WeatherWithLocation />
-        <div className="aqi-info">
+        {/* <div className="aqi-info">
           <div className="aqi-value">39</div>
           <div className="condition">Good</div>
-        </div>
+        </div> */}
       </div>
       <div className="graph">
         {/* Placeholder for Graph or Chart */}

@@ -49,7 +49,7 @@ const WeatherWithLocation = () => {
       {error ? (
         <p>Error: {error}</p>
       ) : weatherData ? (
-        <div>
+        <div className="aqi-info">
           <h2>Weather in Your Location:</h2>
           <p>Temperature: {weatherData.main?.temp}°C</p>
           <p>Weather: {weatherData.weather[0]?.description}</p>
