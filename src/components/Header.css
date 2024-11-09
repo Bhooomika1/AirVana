@@ -1,25 +1,20 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #007acc;
-    color: white;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
-  }
-  
-  .nav a:hover {
-    text-decoration: underline;
-  }
-  
+
+
+.navbar {
+  display: flex;
+  gap: 20px; /* Space between the buttons */
+}
+
+.navbar button {
+  padding: 5px 10px; /* Adjusted padding for a more comfortable size */
+  font-size: 14px; /* Smaller font size */
+  color: white; /* White text color */
+  background-color: transparent; /* Transparent button background */
+  border: none; /* Remove button border */
+  cursor: pointer;
+  transition: color 0.3s; /* Smooth transition for text color */
+}
+
+.navbar button:hover {
+  color: #ffcc00; /* Change text color on hover */
+}

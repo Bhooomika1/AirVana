@@ -19,3 +19,38 @@ body {
   margin: 20px;
   padding: 20px;
 }
+
+.app-container {
+  background-image: url('./assets/background.png'); /* Common background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Ensure full viewport height */
+  color: white; /* Text color for both sections */
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 20px;
+  color: white;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 1200px;
+  margin: 20px auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.1); /* Adjust transparency if needed */
+  backdrop-filter: blur(10px);
+}
+
+.hero {
+  height: 100vh; /* Full viewport height for the Hero section */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: -20px; /* Remove any space between the Header and Hero */
+}
+

@@ -1,18 +1,19 @@
 import React from 'react';
-import './Header.css';
+import './Header.css'; // Import your CSS file
 
-const Header = () => {
+const Header = ({ setActiveSection }) => {
   return (
     <header className="header">
-      <div className="logo">Air Quality Tracking</div>
-      <nav className="nav">
-        <a href="#home">Home</a>
-        <a href="#alerts">Alerts</a>
-        <a href="#community">Community</a>
-        <a href="#reports">Reports</a>
+      <h1>AirVana</h1>
+      <nav className="navbar">
+        <button onClick={() => setActiveSection('home')}>Home</button>
+        <button onClick={() => setActiveSection('alerts')}>Alerts</button>
+        <button onClick={() => setActiveSection('community')}>Community</button>
+        <button onClick={() => setActiveSection('reports')}>Reports</button>
       </nav>
     </header>
   );
 };
 
 export default Header;
+

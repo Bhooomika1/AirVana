@@ -1,6 +1,7 @@
 import React from 'react';
 import './Hero.css';
 import backgroundImage from '../assets/background.png';
+
 import WeatherWithLocation from './WeatherWithLocation';
 
 const Hero = () => {
