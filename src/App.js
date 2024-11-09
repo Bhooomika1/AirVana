@@ -2,23 +2,36 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Card from './components/Card';
-import PieChart from './components/PieChart';
+import PieChart from './components/PieChart'; // Import the PieChart component
 import './App.css';
 import { FaHome, FaBell, FaUsers, FaChartBar } from 'react-icons/fa';
 
+const chartData = {
+  labels: ['CO2', 'PM2.5', 'PM10', 'O3', 'NO2', 'SO2'],
+  datasets: [
+    {
+      data: [400, 35, 50, 30, 25, 15], // Your data values
+      backgroundColor: [
+        '#FF6F61', // CO2
+        '#FFD700', // PM2.5
+        '#98FB98', // PM10
+        '#87CEEB', // O3
+        '#9370DB', // NO2
+        '#FFA500', // SO2
+      ],
+      borderColor: '#FFFFFF', // White borders to make slices stand out
+      borderWidth: 2,
+    },
+  ],
+};
+
 function App() {
   const [activeSection, setActiveSection] = useState('home');
-  const [airConcentrationData, setAirConcentrationData] = useState([]);
   const [alerts, setAlerts] = useState([]);
   const [communityPosts, setCommunityPosts] = useState([]);
   const [reports, setReports] = useState([]);
 
   useEffect(() => {
-    const fetchAirConcentrationData = () => {
-      const sampleData = [400, 35, 50, 30, 25, 15];
-      setAirConcentrationData(sampleData);
-    };
-
     const fetchAlerts = () => {
       const sampleAlerts = [
         { type: 'High Ozone Levels', message: 'Ozone levels are dangerously high today.' },
@@ -43,7 +56,6 @@ function App() {
       setReports(sampleReports);
     };
 
-    fetchAirConcentrationData();
     fetchAlerts();
     fetchCommunityPosts();
     fetchReports();
@@ -70,7 +82,7 @@ function App() {
             </div>
             <div className="chart-section">
               <h2>Air Concentration Overview</h2>
-              <PieChart airConcentrationData={airConcentrationData} />
+              <PieChart data={chartData} width={300} height={300} />
             </div>
           </div>
         )}
