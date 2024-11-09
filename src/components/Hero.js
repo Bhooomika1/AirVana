@@ -1,6 +1,7 @@
 import React from 'react';
 import './Hero.css';
 import backgroundImage from '../assets/background.png';
+import WeatherWithLocation from './WeatherWithLocation';
 
 const Hero = () => {
   return (
@@ -20,6 +21,7 @@ const Hero = () => {
       <div className="hero-content">
         <h1>AirVana</h1>
         <p>Air Quality Tracking</p>
+        <WeatherWithLocation />
         <div className="aqi-info">
           <div className="aqi-value">39</div>
           <div className="condition">Good</div>

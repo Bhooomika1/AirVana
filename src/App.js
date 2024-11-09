@@ -12,6 +12,7 @@ function App() {
        
       <Header />
       <Hero />
+      
       <div className="dashboard">
      
         <Card title="Home" content={<p>Graph or Data</p>} />
