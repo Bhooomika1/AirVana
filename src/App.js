@@ -2,26 +2,34 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Card from './components/Card';
+<<<<<<< HEAD
 import PieChart from './components/PieChart';
 import ParallaxSection from './components/ParallaxSection';
+=======
+import PieChart from './components/PieChart'; 
+>>>>>>> ddfed966db4bea80ccc9acae39ddbe0c81dcff66
 import './App.css';
 import { FaHome, FaBell, FaUsers, FaChartBar } from 'react-icons/fa';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 
+const chartData = {
+  labels: ['CO2', 'PM2.5', 'PM10', 'O3', 'NO2', 'SO2'],
+  datasets: [
+    {
+      data: [400, 35, 50, 30, 25, 15],
+      backgroundColor: ['#FF6F61', '#FFD700', '#98FB98', '#87CEEB', '#9370DB', '#FFA500'],
+      borderColor: '#FFFFFF',
+      borderWidth: 2,
+    },
+  ],
+};
+
 function App() {
   const [activeSection, setActiveSection] = useState('home');
-  const [airConcentrationData, setAirConcentrationData] = useState([]);
   const [alerts, setAlerts] = useState([]);
-  const [communityPosts, setCommunityPosts] = useState([]);
-  const [reports, setReports] = useState([]);
-
+  
   useEffect(() => {
-    const fetchAirConcentrationData = () => {
-      const sampleData = [400, 35, 50, 30, 25, 15];
-      setAirConcentrationData(sampleData);
-    };
-
     const fetchAlerts = () => {
       const sampleAlerts = [
         { type: 'High Ozone Levels', message: 'Ozone levels are dangerously high today.' },
@@ -30,29 +38,11 @@ function App() {
       setAlerts(sampleAlerts);
     };
 
-    const fetchCommunityPosts = () => {
-      const samplePosts = [
-        { user: 'Jane Doe', message: 'Noticed heavy traffic affecting air quality today.' },
-        { user: 'John Smith', message: 'Community clean-up event this Saturday!' },
-      ];
-      setCommunityPosts(samplePosts);
-    };
-
-    const fetchReports = () => {
-      const sampleReports = [
-        { title: 'Monthly AQI Analysis', date: 'November 2024' },
-        { title: 'Pollution Impact Study', date: 'October 2024' },
-      ];
-      setReports(sampleReports);
-    };
-
-    fetchAirConcentrationData();
     fetchAlerts();
-    fetchCommunityPosts();
-    fetchReports();
   }, []);
 
   return (
+<<<<<<< HEAD
     <ParallaxProvider>
       <div className={`App ${activeSection}-section`}>
         <div className="app-container">
@@ -69,6 +59,29 @@ function App() {
               <p>Weather in Your Location:</p>
               <p>Temperature: 27.99°C</p>
               <p>Weather: smoke</p>
+=======
+    <div className={`App ${activeSection}-section`}>
+      <div className="app-container">
+        <Header setActiveSection={setActiveSection} />
+        <Hero />
+      </div>
+      <div className="content">
+        {activeSection === 'home' && (
+          <div>
+            <div className="home-card">
+              <h1 className="home-title">
+                <FaHome /> HOME
+              </h1>
+              <div className="weather-info">
+                <p>Weather in Your Location:</p>
+                <p>Temperature: 27.99°C</p>
+                <p>Weather: smoke</p>
+              </div>
+            </div>
+            <div className="chart-section">
+              <h2>Air Concentration Overview</h2>
+              <PieChart data={chartData} width={300} height={300} />
+>>>>>>> ddfed966db4bea80ccc9acae39ddbe0c81dcff66
             </div>
           </div>
           <div className="chart-section slide-in-right">
@@ -77,19 +90,30 @@ function App() {
           </div>
         </ParallaxSection>
 
+<<<<<<< HEAD
         <ParallaxSection id="section2" image="assets/background_2.png">
           <Card
             title="Alerts"
             icon={<FaBell />}
             content={
               <div className="slide-in-left">
+=======
+        {activeSection === 'alerts' && (
+          <div className="alert-section">
+            <div className="alert-card">
+              <h1 className="alert-title">
+                <FaBell /> ALERT
+              </h1>
+              <div className="alert-messages">
+>>>>>>> ddfed966db4bea80ccc9acae39ddbe0c81dcff66
                 {alerts.map((alert, index) => (
                   <div key={index}>
-                    <strong>{alert.type}</strong>
+                    <p><strong>{alert.type}</strong></p>
                     <p>{alert.message}</p>
                   </div>
                 ))}
               </div>
+<<<<<<< HEAD
             }
           />
         </ParallaxSection>
@@ -135,6 +159,18 @@ function App() {
             }
           />
         </ParallaxSection>
+=======
+            </div>
+            <div className="alert-images">
+            <img src="/assets/pollution.png" alt="Pollution Image 1" />
+            <img src="/assets/pollution_1.png" alt="Pollution Image 2" />
+            <img src="/assets/pollution_3.png" alt="Pollution Image 3" />
+            </div>
+          </div>
+        )}
+        
+        {/* Other sections like Community and Reports */}
+>>>>>>> ddfed966db4bea80ccc9acae39ddbe0c81dcff66
       </div>
     </ParallaxProvider>
   );
