@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Card from './components/Card';
 import PieChart from './components/PieChart';
-import ParallaxSection from './components/ParallaxSection';
 import './App.css';
-import { FaHome, FaBell, FaUsers, FaChartBar } from 'react-icons/fa';
-import { ParallaxProvider } from 'react-scroll-parallax';
-import { ScrollMenu } from 'react-horizontal-scrolling-menu';
+import { FaHome, FaBell } from 'react-icons/fa';
 
 const chartData = {
   labels: ['CO2', 'PM2.5', 'PM10', 'O3', 'NO2', 'SO2'],
@@ -24,121 +20,71 @@ const chartData = {
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [alerts, setAlerts] = useState([]);
-  const communityPosts = []; // Example: replace with actual data
-  const reports = []; // Example: replace with actual data
 
   useEffect(() => {
-    const fetchAlerts = () => {
-      const sampleAlerts = [
-        { type: 'High Ozone Levels', message: 'Ozone levels are dangerously high today.' },
-        { type: 'Wildfire Smoke', message: 'Air quality may be affected by nearby wildfires.' },
-      ];
-      setAlerts(sampleAlerts);
-    };
-
-    fetchAlerts();
+    const sampleAlerts = [
+      { type: 'High Ozone Levels', message: 'Ozone levels are dangerously high today.' },
+      { type: 'Wildfire Smoke', message: 'Air quality may be affected by nearby wildfires.' },
+    ];
+    setAlerts(sampleAlerts);
   }, []);
 
   return (
-    <ParallaxProvider>
-      <div className={`App ${activeSection}-section`}>
-        <div className="app-container">
-          <Header setActiveSection={setActiveSection} />
-          <Hero />
-        </div>
-
-        <div className="content">
-          {activeSection === 'home' && (
-            <ParallaxSection id="section1" image="assets/background.png">
-              <div className="home-card slide-in-left">
-                <h1 className="home-title">
-                  <FaHome /> HOME
-                </h1>
-                <div className="weather-info">
-                  <p>Weather in Your Location:</p>
-                  <p>Temperature: 27.99°C</p>
-                  <p>Weather: smoke</p>
-                </div>
-              </div>
-              <div className="chart-section">
-                <h2>Air Concentration Overview</h2>
-                <PieChart data={chartData} width={300} height={300} />
-              </div>
-            </ParallaxSection>
-          )}
-
-          {activeSection === 'alerts' && (
-            <ParallaxSection id="section2" image="assets/background_2.png">
-              <Card
-                title="Alerts"
-                icon={<FaBell />}
-                content={
-                  <div className="alert-messages">
-                    {alerts.map((alert, index) => (
-                      <div key={index}>
-                        <p><strong>{alert.type}</strong></p>
-                        <p>{alert.message}</p>
-                      </div>
-                    ))}
-                  </div>
-                }
-              />
-              <div className="alert-images">
-                <img src="/assets/pollution.png" alt="Pollution Image 1" />
-                <img src="/assets/pollution_1.png" alt="Pollution Image 2" />
-                <img src="/assets/pollution_3.png" alt="Pollution Image 3" />
-              </div>
-            </ParallaxSection>
-          )}
-
-          {activeSection === 'community' && (
-            <ParallaxSection id="section3" image="assets/background_2.png">
-              <Card
-                title="Community"
-                icon={<FaUsers />}
-                content={
-                  <div>
-                    {communityPosts.map((post, index) => (
-                      <div key={index}>
-                        <strong>{post.user}</strong>
-                        <p>{post.message}</p>
-                      </div>
-                    ))}
-                    <a href="#community-forum" style={{ display: 'block', marginTop: '10px' }}>
-                      Join the Discussion
-                    </a>
-                  </div>
-                }
-              />
-            </ParallaxSection>
-          )}
-
-          {activeSection === 'reports' && (
-            <ParallaxSection id="section4" image="assets/background.png">
-              <Card
-                title="Reports"
-                icon={<FaChartBar />}
-                content={
-                  <div>
-                    <ScrollMenu>
-                      {reports.map((report, index) => (
-                        <div key={index} style={{ margin: '0 10px' }}>
-                          <strong>{report.title}</strong>
-                          <p>{report.date}</p>
-                        </div>
-                      ))}
-                    </ScrollMenu>
-                    <a href="#download-reports" style={{ display: 'block', marginTop: '10px' }}>
-                      Download Reports
-                    </a>
-                  </div>
-                }
-              />
-            </ParallaxSection>
-          )}
-        </div>
+    <div className={`App ${activeSection}-section`}>
+      <div className="app-container">
+        <Header setActiveSection={setActiveSection} />
+        <Hero />
       </div>
-    </ParallaxProvider>
+      <div className="content">
+        {activeSection === 'home' && (
+          <div>
+            <div className="home-card">
+              <h1 className="home-title">
+                <FaHome /> HOME
+              </h1>
+              <div className="weather-info">
+                <p>Weather in Your Location:</p>
+                <p>Temperature: 27.99°C</p>
+                <p>Weather: smoke</p>
+              </div>
+            </div>
+            <div className="chart-section">
+              <h2>Air Concentration Overview</h2>
+              <PieChart data={chartData} width={300} height={300} />
+            </div>
+          </div>
+        )}
+
+        {activeSection === 'alerts' && (
+          <div className="alert-section">
+            <div className="alert-card">
+              <h1 className="alert-title">
+                <FaBell /> ALERT
+              </h1>
+              <div className="alert-messages">
+                {alerts.map((alert, index) => (
+                  <div key={index}>
+                    <p><strong>{alert.type}</strong></p>
+                    <p>{alert.message}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="alert-images">
+              <div className="alert-image-container">
+                <img src="https://www.shutterstock.com/image-photo/air-pollution-chemical-industry-on-260nw-2471011119.jpg" alt="Pollution Image 1" className="alert-image" />
+                <img src="https://media.istockphoto.com/id/167231386/photo/detail-of-white-smoke-polluted-sky.jpg?s=612x612&w=0&k=20&c=hExCnY1CN7xieBUcBTQ8h37TDLkSWCT06l8bbShbQvE=" alt="Pollution Image 2" className="alert-image" />
+                <img src="https://plus.unsplash.com/premium_photo-1664298311043-46b3814a511f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9sbHV0aW9ufGVufDB8fDB8fHww" alt="Pollution Image 3" className="alert-image" />
+                {/* Duplicate images for continuous scrolling effect */}
+                <img src="https://www.shutterstock.com/image-photo/air-pollution-chemical-industry-on-260nw-2471011119.jpg" alt="Pollution Image 1" className="alert-image" />
+                <img src="https://media.istockphoto.com/id/167231386/photo/detail-of-white-smoke-polluted-sky.jpg?s=612x612&w=0&k=20&c=hExCnY1CN7xieBUcBTQ8h37TDLkSWCT06l8bbShbQvE=" alt="Pollution Image 2" className="alert-image" />
+                <img src="https://plus.unsplash.com/premium_photo-1664298311043-46b3814a511f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9sbHV0aW9ufGVufDB8fDB8fHww" alt="Pollution Image 3" className="alert-image" />
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 
