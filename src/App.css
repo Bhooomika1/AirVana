@@ -1,38 +1,16 @@
 /* Default styles for the app */
-body {
+body, html {
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
   color: #333;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .App {
   text-align: center;
-}
-
-/* Background for Home, Community, and Reports sections */
-.home-section, .community-section, .reports-section {
-  background-image: url('assets/background.png'); /* Ensure the path is correct */
-  background-size: cover; /* Makes the image cover the entire section */
-  background-position: center center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  min-height: 100vh;
-}
-
-/* Background for Alerts section */
-.alerts-section {
-  background-image: url('assets/background.png'); /* Ensure the path is correct */
-  background-size: cover; /* Makes the image cover the entire section */
-  background-position: center center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  min-height: 100vh;
-}
-
-/* Other styling */
-.dashboard {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px;
-  padding: 20px;
 }
 
 .app-container {
@@ -40,33 +18,57 @@ body {
   color: white;
 }
 
+/* Header styling */
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px 20px;
+  padding: 10px 20px;
   color: white;
-  border-radius: 20px;
-  width: 80%;
-  max-width: 1200px;
-  margin: 20px auto;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background for navbar */
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
 }
 
-.hero {
-  height: 100vh;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Parallax Section styles */
+.parallax-section {
+  height: 100vh; /* Full viewport height for each section */
+  width: 100vw; /* Full viewport width */
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  margin-top: -20px;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
-.home-card {
-  background: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
+/* Specific section backgrounds */
+#section1 {
+  background-image: url('assets/background.png'); /* Home section background */
+}
+
+#section2, #section3 {
+  background-image: url('assets/background_2.png'); /* Alerts & Community section background */
+}
+
+#section4 {
+  background-image: url('assets/background.png'); /* Reports section background */
+}
+
+/* Styling for Cards and Content inside Sections */
+.home-card, .card {
+  background: rgba(0, 0, 0, 0.6); /* Dark background with opacity */
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -77,7 +79,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.home-title {
+.home-title, .section-title {
   font-size: 2rem;
   font-weight: bold;
   display: flex;
@@ -86,7 +88,7 @@ body {
   margin-bottom: 15px;
 }
 
-.weather-info {
+.weather-info, .section-content {
   font-size: 1.2rem;
   line-height: 1.5;
 }
@@ -97,4 +99,41 @@ body {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.scroll-menu {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: -20px;
+}
+
+/* Animation for content reveal */
+.slide-in-left, .slide-in-right {
+  opacity: 0;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.slide-in-left {
+  transform: translateX(-50%);
+}
+
+.slide-in-right {
+  transform: translateX(50%);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
