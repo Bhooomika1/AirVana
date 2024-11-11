@@ -7,28 +7,103 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-image: url('./assets/background.png'); /* Correct path for background image */
-  background-size: cover;
-  background-position: center;
+  background-color: #8EE26B; /* Set background color */
   color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* App.css */
+
+/* Global body styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set background color for the landing page */
+.landing-section .hero-section {
+  background-color: #8EE26B;
+  display: flex;
+  justify-content: flex-start; /* Move content to the left */
+  align-items: center;
+  height: 70vh;
+  padding-left: 50px; /* Add padding to adjust distance from the edge */
+}
+
+/* Styles for the AIRVANA card */
+
+
+.hero-content h1 {
+  font-size: 7rem;
+  margin-top: 40px; /* Move it upwards by adjusting this value */
+  /* Alternatively, use transform for fine-tuning */
+  transform: translateY(-10px); /* Adjust this value to move it up or down */
+}
+
+.subtitle {
+  white-space: nowrap; /* Prevents the text from wrapping */
+  overflow: hidden;    /* Hides the overflow if text overflows the container */
+  text-overflow: ellipsis; /* Optional: Adds ellipsis if the text is too long */
+  font-size: 1.5rem;   /* Adjust font size as needed */
+  margin-bottom: 1rem; /* Adjust margin if needed */
+}
+
+.cta-button {
+  background-color: #0c631f9c;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Adjust values as needed */
+  border-radius: 8px; /* Optional: to add a slight rounding to the corners */
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  margin-top: 20px;
+  color: #FFFFFF;
+}
+
+/* CSS for the GIF Container */
+.gif-container {
+  position: fixed;
+  top: 60%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.gif-container img {
+  width: 700px; /* Adjust size as needed */
+  height: 500px;
+  border-radius: 0px; /* Optional: rounded corners */
+}
+
+/* Shadow style for GIF */
+.gif-container img {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Adjust values as needed */
+  border-radius: 8px; /* Optional: to add a slight rounding to the corners */
+}
 /* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #8EE26B;
 }
 
-.logo-img {
-  width: 160px;
-  height: 100px;
-}
+/* .logo-img {
+  width: 180px;
+  height: 150px;
+} */
 
 /* Navigation */
 .nav {
@@ -37,11 +112,38 @@ body {
 }
 
 .nav-link {
-  color: #FFD700;
-  font-weight: bold;
+  color: white;
   text-decoration: none;
-  display: flex;
-  align-items: center;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for the Home button */
+.nav-link:hover {
+  background-color: #04895a; /* Hover background color */
+  color: white; /* Ensure the text color stays white */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Adjust values as needed */
+  border-radius: 8px; /* Optional: to add a slight rounding to the corners */
+}
+
+/* Optional: Specific hover styles for each button if needed */
+.nav-link.home:hover {
+  background-color: #FFD700; /* Gold background for Home */
+}
+
+.nav-link.alerts:hover {
+  background-color: #5188e2; /* Red background for Alerts */
+}
+
+.nav-link.community:hover {
+  background-color: #32CD32; /* Green background for Community */
+}
+
+.nav-link.report:hover {
+  background-color: #1E90FF; /* Blue background for Report */
 }
 
 .nav-link svg {
@@ -53,59 +155,6 @@ body {
 }
 
 /* Hero Section */
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  text-align: center;
-  padding: 50px 20px;
-}
-
-.hero-content {
-  background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 400px;
-  width: 100%;
-}
-
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  font-size: 1rem;
-  margin-bottom: 20px;
-  color: #DDDDDD;
-}
-
-.hero-content h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.cta-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.cta-button:hover {
-  background-color: #45a049;
-}
-
-.footer-text {
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #CCCCCC;
-}
 
 /* Content Sections */
 .content {
@@ -236,3 +285,5 @@ body {
     animation: scrollImages 20s linear infinite;
   }
 }
+ 
+

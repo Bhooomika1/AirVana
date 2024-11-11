@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import PieChart from './components/PieChart';
 import { FaHome, FaBell, FaUsers, FaChartBar } from 'react-icons/fa';
+import PieChart from './components/PieChart';
 
 const chartData = {
   labels: ['CO2', 'PM2.5', 'PM10', 'O3', 'NO2', 'SO2'],
@@ -33,10 +31,20 @@ function App() {
     <div className={`App ${activeSection}-section`}>
       {/* Header Section */}
       <header className="header">
-        <div className="logo">
-          <img src="/logo.png" alt="Airvana Logo" className="logo-img" /> {/* Updated path */}
-        </div>
-        <nav className="nav">
+        {/* Log In and Sign In - Only on Landing Page */}
+        {activeSection === 'landing' && (
+          <nav className="auth-nav">
+            <a href="#login" className="nav-link" onClick={() => setActiveSection('login')}>
+              Log In
+            </a>
+            <a href="#signin" className="nav-link" onClick={() => setActiveSection('signin')}>
+              Sign In
+            </a>
+          </nav>
+        )}
+
+        {/* Main Navigation */}
+        <nav className="main-nav">
           <a href="#home" className="nav-link" onClick={() => setActiveSection('home')}>
             <FaHome /> HOME
           </a>
@@ -59,7 +67,9 @@ function App() {
             <h1>AIRVANA</h1>
             <p className="subtitle">Sustainable Solutions for a Sustainable Planet</p>
             <h2>Air Quality Training</h2>
-            <button className="cta-button" onClick={() => setActiveSection('home')}>Get Started</button>
+            <button className="cta-button" onClick={() => setActiveSection('home')}>
+              Get Started
+            </button>
             <p className="footer-text">Together, we can make a difference.</p>
           </div>
         </section>
@@ -108,6 +118,13 @@ function App() {
               <img src="https://plus.unsplash.com/premium_photo-1664298311043-46b3814a511f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9sbHV0aW9ufGVufDB8fDB8fHww" alt="Pollution Image 3" className="alert-image" />
             </div>
           </div>
+        </div>
+      )}
+
+      {/* GIF Section */}
+      {activeSection === 'landing' && (
+        <div className="gif-container">
+          <img src="https://cdn.dribbble.com/users/2517905/screenshots/15651749/media/e5595b1f647115b711652b8a40f0da90.gif" alt="tree GIF" />
         </div>
       )}
     </div>
